@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Black Jack</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+	<body onload="init();">
+		<header id="header">
+			<div class="panel round">
+				<h2 class="text-centered">Welcome to my casino</h2>
+			</div>
+		</header>
+
+		<div id="content">
+			<div class="panel round">
+				<form>
+					<div class="card-container text-centered">
+						<img class="radius" src="img/cardback.jpg" alt="Card 1"><br />
+						<span class="legend">Points for Card 1</span>
+						<input id="card1" type="text" name="card1" size="1" />
+					</div>
+					<div class="card-container text-centered">
+						<img class="radius" src="img/cardback.jpg" alt="Card 2"><br />
+						<span class="legend">Points for Card 1</span>
+						<input id="card2" type="text" name="card2" size="1" />
+					</div>
+					
+
+					<br /><br />
+
+					<div class="text-centered">
+						Points for the hand: <input id="" type="text" name="total" size="1" /><br />
+						Number of hands so far is: <input type="text" name="total" size="1" /><br />
+
+						<button type="button" onclick="deal(this.form);">Deal a Hand</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/main.js"></script>
+	</body>
+</html>

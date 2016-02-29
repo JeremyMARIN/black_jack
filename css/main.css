@@ -1,0 +1,66 @@
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0 0 8px 0;
+}
+
+body {
+	background-image: url("../img/background.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+form {
+	line-height: 2em;
+}
+
+a:link {
+	color: #f0bb00;
+}
+
+a:visited {
+	color: #3ea2dc;
+}
+
+.centered {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.panel {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+	margin: 8px;
+	padding: 16px;
+}
+
+.text-centered {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.round {
+	border-radius: 25px;
+}
+
+.radius {
+	border-radius: 10px;
+}
+
+.card-container {
+	display: inline-block;
+	width: 49.5%;
+}
+
+
+#header, #content {
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
+}
