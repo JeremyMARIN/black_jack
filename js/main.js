@@ -1,5 +1,7 @@
 var counter = 0;
+var paused = 0;
 
+// welcome the customer by checking his/her cookies
 function init() {
 	var username = readCookie("username");
 	var blackjacks = parseInt(readCookie("blackjacks")); // convert string into integer
@@ -18,6 +20,7 @@ function init() {
 	}
 }
 
+// convert card's index into point
 function getPoint(card) {
 	if (card == 1)// ace
 		return 11;
@@ -28,7 +31,11 @@ function getPoint(card) {
 	
 }
 
+// deal two cards
 function deal(form) {
+	if (paused) // if the script is paused, do nothing
+		return;
+
 	var card1 = Math.floor( (Math.random() * 13) + 1 );
 	var card2 = Math.floor( (Math.random() * 13) + 1 );
 
@@ -52,10 +59,15 @@ function deal(form) {
 	if (total == 21) { // black jack!
 		console.log("[d] Increment the number of blackjacks");
 		writeCookie("blackjacks", parseInt(readCookie("blackjacks")) + 1); // increment the number of blackjacks
-		alert("Black Jack! Congratulations!");
+
+		paused = 1; // freeze the script for 2 seconds
+		setTimeout(function() {
+			openPopupCongrats();
+		}, 2000);
 	}
 }
 
+// write a cookie
 function writeCookie(name, value) {
 	var date = new Date();
 	date.setTime(date.getTime() + (1000 * 60 * 60 * 24 * 30)); // expire in 1 month
@@ -63,6 +75,7 @@ function writeCookie(name, value) {
 	document.cookie = name + "=" + value + expires;
 }
 
+// read a cookie
 function readCookie(name) {
 	var name = name + "=";
 	var cookies = document.cookie.split(";");
@@ -74,4 +87,25 @@ function readCookie(name) {
 			return cookie.substring(name.length, cookie.length);
 	}
 	return null;
+}
+
+// open a popup which congrats the customer
+function openPopupCongrats() {
+	var popupWidth = 600;
+	var popupHeight = 420;
+
+	var popupLeft = screen.width/2 - popupWidth/2;
+	var popupTop = screen.height/2 - popupHeight/2;
+	window.open("congratulations.html", "congratulations", "height=" + popupHeight + ",width=" + popupWidth + ",left=" + popupLeft + ",top=" + popupTop);
+}
+
+// close the popup
+function closePopupCongrats() {
+	window.opener.paused = 0; // enable the script
+	window.close();
+}
+
+// function used by the popup to print the number of blackjacks so far
+function showBlackjacks() {
+	document.getElementById("nbr-of-blackjacks").innerHTML = "You have done " + readCookie("blackjacks") + " blackjacks so far!";
 }

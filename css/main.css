@@ -16,6 +16,11 @@ form {
 	line-height: 2em;
 }
 
+button {
+	font-size: 1.2em;
+	padding: 0 16px;
+}
+
 a:link {
 	color: #f0bb00;
 }
@@ -63,4 +68,8 @@ a:visited {
 	margin-left: auto;
 	margin-right: auto;
 	width: 70%;
+}
+
+#congrat-img {
+	width: 50%;
 }
